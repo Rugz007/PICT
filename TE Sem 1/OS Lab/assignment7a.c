@@ -23,6 +23,7 @@ int main()
     write(fd, buf1, sizeof(buf1));
     close(fd);
     unlink(fifo1);
+
     fd1 = open(fifo2, O_RDWR);
     read(fd1, buf1, sizeof(buf1));
     printf("\nThe contents of file are: %s\n", buf1);
