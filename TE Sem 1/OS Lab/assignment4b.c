@@ -11,7 +11,7 @@ void *writer(void *wno)
 {
     sem_wait(&wrt);
     cnt = cnt * 2;
-    printf("Writer %d modified cnt to %d\n", (*((int *)wno)), cnt);
+    printf("Writer %d modified cnt to %d\n", *((int *)wno), cnt);
     sem_post(&wrt);
 }
 
@@ -59,15 +59,15 @@ int main()
 
     printf("Enter no of writers: ");
     scanf("%d", &w);
-    for (int i = 0; i < w; i++)
-    {
-
-        pthread_create(&write[i], NULL, (void *)writer, (void *)&a[i]);
-    }
     for (int i = 0; i < r; i++)
     {
 
         pthread_create(&read[i], NULL, (void *)reader, (void *)&a[i]);
+    }
+    for (int i = 0; i < w; i++)
+    {
+
+        pthread_create(&write[i], NULL, (void *)writer, (void *)&a[i]);
     }
 
     for (int i = 0; i < r; i++)

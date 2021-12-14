@@ -158,6 +158,7 @@ void lru()
             {
                 int pg = p[j];
                 int found = 0;
+                //TODO: Understand this loop
                 for (k = i - 1; k >= 0; k--)
                 {
                     if (pg == in[k])

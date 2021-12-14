@@ -67,7 +67,7 @@
 //     char **arr;
 //     if (argc <= 1)
 //     {
-//  printf("\nPROVIDE ELEMENTS OF ARRAY AS ARGUMENTS...!!\n\n");
+//         printf("\nPROVIDE ELEMENTS OF ARRAY AS ARGUMENTS...!!\n\n");
 //     }
 //     else
 //     {
@@ -88,67 +88,67 @@
 //     }
 // }
 
-
 // Child
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
 int binarySearch(int arr[], int l, int r, int x)
 {
- if (r >= l) {
- int mid = l + (r - l) / 2;
+    if (r >= l)
+    {
+        int mid = l + (r - l) / 2;
 
- if (arr[mid] == x)
- return mid;
+        if (arr[mid] == x)
+            return mid;
 
- if (arr[mid] > x)
- return binarySearch(arr, l, mid - 1, x);
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
 
- return binarySearch(arr, mid + 1, r, x);
- }
+        return binarySearch(arr, mid + 1, r, x);
+    }
 
- return -1;
+    return -1;
 }
 int binary_search(int argument_count, char *argument_array[],
-int *integer_array, int key)
+                  int *integer_array, int key)
 {
- for (int i = 0; i < argument_count; i++)
- {
- *(integer_array + i) = atoi(argument_array[i]);
- }
- return binarySearch(integer_array, 0, argument_count, key);
+    for (int i = 0; i < argument_count; i++)
+    {
+        *(integer_array + i) = atoi(argument_array[i]);
+    }
+    return binarySearch(integer_array, 0, argument_count, key);
 }
-int main(int argc, char* argv[],char *envp[])
+int main(int argc, char *argv[], char *envp[])
 {
- int count=0, i=0;
- int ele;
- int *integer_array = (int *)malloc(argc * sizeof(int));
- printf("\nCHILD PROCESS START\n");
+    int count = 0, i = 0;
+    int ele;
+    int *integer_array = (int *)malloc(argc * sizeof(int));
+    printf("\nCHILD PROCESS START\n");
 
- printf("SORTED ARRAY: ");
- for(i = 0; i < argc; i++)
- {
- if(strcmp(argv[i],"0")==0 && count<1)
- {
- count++;
- continue;
- }
- else
- printf("%s ", argv[i]);
- }
- printf("\nENTER ELEMENT TO FIND: ");
- scanf("%d", &ele);
- printf("\n\nAPPLYING BINARY SEARCH FOR ELEMENT %d..!!\n\n",
-ele);
- int result = binary_search(argc, argv, integer_array, ele);
- if(result!=-1){
- printf("ELEMENT FOUND AT %d INDEX\n", result);
- }
- else
- printf("ELEMENT NOT FOUND...!!\n");
+    printf("SORTED ARRAY: ");
+    for (i = 0; i < argc; i++)
+    {
+        if (strcmp(argv[i], "0") == 0 && count < 1)
+        {
+            count++;
+            continue;
+        }
+        else
+            printf("%s ", argv[i]);
+    }
+    printf("\nENTER ELEMENT TO FIND: ");
+    scanf("%d", &ele);
+    printf("\n\nAPPLYING BINARY SEARCH FOR ELEMENT %d..!!\n\n",
+           ele);
+    int result = binary_search(argc, argv, integer_array, ele);
+    if (result != -1)
+    {
+        printf("ELEMENT FOUND AT %d INDEX\n", result);
+    }
+    else
+        printf("ELEMENT NOT FOUND...!!\n");
 
-
- printf("\nCHILD PROCESS EXITED..!!\n");
+    printf("\nCHILD PROCESS EXITED..!!\n");
 }

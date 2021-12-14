@@ -107,6 +107,7 @@ int main(void)
 
         if (p == 0)
         {
+            //CHILD Process Execution
             printf("\nCHILD PROCESS WITH PID : %d AND PARENT ID :%d\n", getpid(), getppid());
 
             selectionSort(a, n);
@@ -119,6 +120,7 @@ int main(void)
 
         else
         {
+            //Parent Process Execution
             wait(NULL);
             printf("\nPARENT PROCESS WITH PID : %d AND CHILD ID : %d\n", getpid(), p);
             mergeSort(a, 0, n - 1);

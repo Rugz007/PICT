@@ -2,7 +2,7 @@
 
 int main()
 {
-    int arr_time[10], burst_time[10], temp[10];
+    int arr_time[10], burst_time[10], temp[10]; 
     int i, smallest, count = 0, time, n;
     double wait_time = 0, turnaround_time = 0, end;
     float avg_waiting_time, avg_turnaround_time;

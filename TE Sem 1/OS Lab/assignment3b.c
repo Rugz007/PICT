@@ -1,8 +1,8 @@
 #include <stdio.h>
 int main()
 {
-    int i, n, total = 0, x, quant;
-    int wait_time = 0, turnaround_time = 0, arr_time[10], burst_time[10], temp[10];
+    int i, n, time = 0, x, quant;
+    int wait_time = 0, turnaround_time = 0, arr_time[10],   [10], temp[10];
     float average_wait_time, average_turnaround_time;
     printf("Enter Total Number of Processes:\t");
     scanf("%d", &n);
@@ -18,27 +18,26 @@ int main()
     }
     printf("\nEnter Time Quantum:\t");
     scanf("%d", &quant);
-    for (total = 0, i = 0; x != 0;)
+    for (time = 0, i = 0; x != 0;)
     {
         if (temp[i] <= quant && temp[i] > 0)
         {
-            total = total + temp[i];
+            time = time + temp[i];
             temp[i] = 0;
             x--;
-            wait_time = wait_time + total - arr_time[i] - burst_time[i];
-            turnaround_time = turnaround_time + total - arr_time[i];
+            wait_time = wait_time + time - arr_time[i] - burst_time[i];
+            turnaround_time = turnaround_time + time - arr_time[i];
         }
         else if (temp[i] > 0)
         {
             temp[i] = temp[i] - quant;
-            total = total + quant;
+            time = time + quant;
         }
-
         if (i == n - 1)
         {
             i = 0;
         }
-        else if (arr_time[i + 1] <= total)
+        else if (arr_time[i + 1] <= time)
         {
             i++;
         }
